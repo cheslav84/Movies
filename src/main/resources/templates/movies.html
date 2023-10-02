@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<html>
+    <head>
+        <meta content="text/html; charset=UTF-8">
+        <link rel="stylesheet" th:href="@{/styles/common.css}" />
+    </head>
+    <body>
+    <h2 class="title">Movie rent</h2>
+    <nav th:replace="fragments :: nav"></nav>
+
+
+    <div th:if="${movies.size > 0}">
+        <table class="center">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Genre</th>
+                    <th>Daily/period rent</th>
+                    <th>Daily price</th>
+                    <th>Period price</th>
+                    <th>Penalty</th>
+                    <th>Max rental days</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="movie, state : ${movies}" >
+                    <td th:text="${movie.title}"  th:data-name="|/movies/${movie.id}|"
+                        th:onclick="getMovieDetails(this.getAttribute('data-name'))" class="link" ></td>
+                    <td th:text="${movie.movieType.genre}"></td>
+                    <td th:if="${movie.movieType.rentalInfo.dailyWage}">Daily</td>
+                    <td th:if="${!movie.movieType.rentalInfo.dailyWage}">Period</td>
+                    <td th:text="${movie.movieType.rentalInfo.dailyPrice}"></td>
+                    <td th:text="${movie.movieType.rentalInfo.periodPrice}"></td>
+                    <td th:text="${movie.movieType.rentalInfo.penalty}"></td>
+                    <td th:text="${movie.movieType.rentalInfo.allowedRentalDays}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <h3 th:if="${movies.size == 0}" class="center">There are not any movies yet.</h3>
+
+    <script type="text/javascript" th:src="@{/js/script.js}"></script>
+
+    </body>
+</html>

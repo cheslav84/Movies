@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<html>
+    <head>
+        <meta content="text/html; charset=UTF-8">
+        <link rel="stylesheet" th:href="@{/styles/common.css}" />
+    </head>
+    <body>
+    <h2 class="title">Movie rent</h2>
+    <nav th:replace="fragments :: nav"></nav>
+
+    <h3 th:text="${movie.title}" class="title"></h3>
+
+    <div th:if="${movie.movieDetails.size > 0}">
+        <div th:each="movieDetails, state : ${movie.movieDetails}" class="">
+            <div th:text="${movieDetails}" class="center"></div>
+        </div>
+    </div>
+
+    <div th:if="${movie.movieDetails.size == 0}" class="center">
+        <h4 >There are not any movie details yet.</h4>
+        <a th:href="@{/movies/details/add/__${movie.id}__}" class="link">Add details</a>
+    </div>
+
+
+
+    </body>
+</html>
