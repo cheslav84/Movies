@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+
+<html>
+    <head>
+        <meta content="text/html; charset=UTF-8">
+        <link rel="stylesheet" th:href="@{/styles/common.css}" />
+    </head>
+    <body>
+        <h2 class="title">Movie rent</h2>
+        <nav th:replace="fragments :: nav"></nav>
+
+        <hr>
+
+        <form th:action="@{/customers/__${customer.id}__/rentals/add}" th:object="${rental}" method="post" class="center">
+            <h3 class="" th:text="|Add rental for ${customer.name}|"></h3>
+
+            <div class="">
+                <label class="label">Movie <span class="">*</span></label>
+                <select th:field="*{movieId}" class="input-field" id="genreSelect" required>
+                    <option th:value="null" selected>Select movie</option>
+                    <option th:each="movie : ${movies}" th:value="${movie.id}" th:text="${movie.title}"></option>
+                </select>
+                <input type="text" placeholder="Genre" class="input-field hidden" id="genreInput">
+            </div>
+            <hr>
+
+
+            <input type="submit" name="send" value="Add rental" class="">
+        </form>
+
+        <script type="text/javascript" th:src="@{/js/script.js}"></script>
+
+    </body>
+</html>

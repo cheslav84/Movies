@@ -3,46 +3,37 @@
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
 <html>
-<head>
-    <meta content="text/html; charset=UTF-8">
-    <link rel="stylesheet" th:href="@{/styles/common.css}" />
-</head>
-<body>
-<h2 class="title">Movie rent</h2>
-<div class="container">
-    <div class="navigation">
-        <a class="link" href="equations/create">Enter a new equation</a>
+    <head>
+        <meta content="text/html; charset=UTF-8">
+        <link rel="stylesheet" th:href="@{/styles/common.css}" />
+    </head>
+    <body>
+    <h2 class="title">Movie rent</h2>
+    <nav th:replace="fragments :: nav"></nav>
 
 
-
-
-
-        <div class="dropdown">
-            <span class="link">Show equations</span>
-            <div class="dropdown-content">
-                <div class="dropdown-item">
-                    <a class="link" href="equations/all">All the equations</a>
-                </div>
-                <div class="dropdown-item">
-                    <span class="link">Equations with roots amount of</span>
-                    <form method="get" action="equations/withRootsAmount" name="equationForm">
-                        <input class="center narrow" type="number" name="rootsAmount" minlength="1" maxlength="2" required="true" value="${root}" />
-                        <input type="submit" value="Find" />
-                    </form>
-                </div>
-                <div class="dropdown-item">
-                    <span class="link">Equations with root of</span>
-                    <form method="get" action="equations/withRootNumber" name="equationForm">
-                        <input class="center" type="number" name="root" minlength="1" maxlength="20" required="true" value="${root}" />
-                        <input type="submit" value="Find" />
-                    </form>
-                </div>
-            </div>
-        </div>
-
-
+    <div th:if="${customers.size > 0}">
+        <table class="center">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Frequent rental points</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="customer, state : ${customers}" >
+                    <td th:text="${customer.name}"  th:data-name="|/customers/${customer.id}|"
+                        th:onclick="setLink(this.getAttribute('data-name'))" class="link" ></td>
+                    <td th:text="${customer.frequentRenterPoint}"></td>
+                </tr>
+            </tbody>
+        </table>
     </div>
-</div>
-</body>
+    <h3 th:if="${customers.size == 0}" class="center">There are not any movies yet.</h3>
+
+    <script type="text/javascript" th:src="@{/js/script.js}"></script>
+
+    </body>
 </html>

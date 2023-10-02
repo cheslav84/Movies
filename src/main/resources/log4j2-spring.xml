@@ -31,7 +31,7 @@
         </Root>
 
         <!-- LOG "com.gjl.havryliuk.movies*" at TRACE level -->
-        <Logger name="com.gjl.havryliuk.movies" level="trace"></Logger>
+        <Logger name="com.gfl.havryliuk.movies" level="trace"></Logger>
     </Loggers>
 
 </Configuration>

@@ -1,4 +1,4 @@
-function getMovieDetails(value) {
+function setLink(value) {
 	location.href = value;
 }
 

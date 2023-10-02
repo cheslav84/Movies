@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+
+<html>
+    <head>
+        <meta content="text/html; charset=UTF-8">
+        <link rel="stylesheet" th:href="@{/styles/common.css}" />
+    </head>
+    <body>
+        <h2 class="title">Movie rent</h2>
+        <nav th:replace="fragments :: nav"></nav>
+
+        <hr>
+
+        <form th:action="@{/customers/add}" th:object="${customer}" method="post" class="center">
+            <h3 class="">Add customer</h3>
+            <h4 class="">Customer:</h4>
+            <div class="">
+                <label class="label">Name <span class="">*</span></label>
+                <input th:field="*{name}" type="text" placeholder="Customer name" class="input-field" required>
+            </div>
+            <hr>
+            <hr>
+
+            <input type="submit" name="send" value="Add customer" class="">
+        </form>
+
+    </body>
+</html>

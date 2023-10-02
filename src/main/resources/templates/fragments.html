@@ -18,21 +18,24 @@
                     <a th:href="@{/movies/all}" class="link">Show all the movies</a>
                 </div>
                 <div class="dropdown-item">
-                    <span class="link">Select by genre</span>
-                    <form method="get" th:action="@{/movies/genre}" name="equationForm">
-                        <input class="center" type="text" name="genre" minlength="3" maxlength="20" required="true"/>
-                        <!--                        <input class="center" type="text" name="genre" minlength="3" maxlength="20" required="true" value="${root}" />-->
-                        <input type="submit" value="Find"/>
-                    </form>
+                    <a th:href="@{/movies/search}" class="link">Search by options</a>
                 </div>
-                <div class="dropdown-item">
-                    <span class="link">Select by author</span>
-                    <form method="get" th:action="@{/movies/author}" name="equationForm">
-                        <input class="center" type="text" name="author" minlength="3" maxlength="20" required="true"/>
-                        <!--                        <input class="center" type="text" name="genre" minlength="3" maxlength="20" required="true" value="${root}" />-->
-                        <input type="submit" value="Find"/>
-                    </form>
-                </div>
+<!--                <div class="dropdown-item">-->
+<!--                    <span class="link">Select by genre</span>-->
+<!--                    <form method="get" th:action="@{/movies/genre}" name="equationForm">-->
+<!--                        <input class="center" type="text" name="genre" minlength="3" maxlength="20" required="true"/>-->
+<!--                        &lt;!&ndash;                        <input class="center" type="text" name="genre" minlength="3" maxlength="20" required="true" value="${root}" />&ndash;&gt;-->
+<!--                        <input type="submit" value="Find"/>-->
+<!--                    </form>-->
+<!--                </div>-->
+<!--                <div class="dropdown-item">-->
+<!--                    <span class="link">Select by author</span>-->
+<!--                    <form method="get" th:action="@{/movies/author}" name="equationForm">-->
+<!--                        <input class="center" type="text" name="author" minlength="3" maxlength="20" required="true"/>-->
+<!--                        &lt;!&ndash;                        <input class="center" type="text" name="genre" minlength="3" maxlength="20" required="true" value="${root}" />&ndash;&gt;-->
+<!--                        <input type="submit" value="Find"/>-->
+<!--                    </form>-->
+<!--                </div>-->
             </div>
         </div>
 

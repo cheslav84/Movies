@@ -29,8 +29,8 @@ public class Movie {
     @Column(nullable = false)
     private String title;
 
-    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
-    @JoinColumn(nullable = false)//todo check if work
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)//todo set lazy
+    @JoinColumn(nullable = false)
     private MovieType movieType;
 
 //    @OneToMany(mappedBy = "movie", cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
