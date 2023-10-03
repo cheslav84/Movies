@@ -22,30 +22,40 @@
     <div th:if="${customer.rentals.size > 0}">
         <h4 class="center">Rentals</h4>
 
-        <table class="center">
-            <thead>
-            <tr>
-                <th>Movie</th>
-                <th>Rental date</th>
-                <th>Days rented</th>
-                <th>Status</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="rental, state : ${customer.rentals}" >
-                <td th:text="${rental.movie.title}"  th:data-name="|/movies/${rental.movie.id}|"
-                    th:onclick="setLink(this.getAttribute('data-name'))" class="link" ></td>
-                <td th:text="${#temporals.format(rental.rentedDate, 'dd&#x2011MM&#x2011yyyy HH:mm')}"></td>
-                <td th:text="${rental.daysRented}"></td>
 
+        <form th:object="${customer}" th:action="@{/customers/__${customer.id}__/rentals/close}" method="post">
 
-                <td>
-                    <span th:if="${rental.open}">Open</span>
-                    <span th:unless="${rental.open}">Closed</span>
-                </td>
-            </tr>
-            </tbody>
-        </table>
+            <table class="center">
+                <thead>
+                <tr>
+                    <th>Select</th>
+                    <th>Movie</th>
+                    <th>Rental date</th>
+                    <th>Days rented</th>
+                    <th>Status</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="rental, state : ${customer.rentals}" >
+                    <td>
+                        <input th:if="${rental.open}" type="checkbox" th:id="${{rental}}" th:value="${{rental}}" th:field="*{rentals}" />
+                    </td>
+                    <td th:text="${rental.movie.title}"  th:data-name="|/movies/${rental.movie.id}|"
+                        th:onclick="setLink(this.getAttribute('data-name'))" class="link" ></td>
+                    <td th:text="${#temporals.format(rental.rentedDate, 'dd&#x2011MM&#x2011yyyy HH:mm')}"></td>
+                    <td th:text="${rental.daysRented}"></td>
+                    <td>
+                        <span th:if="${rental.open}">Open</span>
+                        <span th:unless="${rental.open}">Closed</span>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <div class="center">
+                <input type="submit" name="send" value="Close rentals" class="">
+            </div>
+        </form>
+
 
 
     </div>
@@ -54,8 +64,6 @@
     <div th:if="${customer.rentals.size == 0}" class="center">
         <h4 >There are not any rentals yet for this customer.</h4>
     </div>
-
-
 
     <script type="text/javascript" th:src="@{/js/script.js}"></script>
 

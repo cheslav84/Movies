@@ -48,13 +48,13 @@ public class MovieDetailsService {
     }
 
     private void setDescription(MovieDetailsDto detailsDto, Movie movie) {
-        if (detailsDto.getDescription() != null && detailsDto.getDescription().length() != 0) {
+        if (detailsDto.getDescription() != null && !detailsDto.getDescription().isEmpty()) {
             movie.getMovieDetails().add(new Description(movie, detailsDto.getDescription()));
         }
     }
 
     private void setDirector(MovieDetailsDto detailsDto, Movie movie) {
-        if (detailsDto.getDirector() != null && detailsDto.getDirector().length() != 0) {
+        if (detailsDto.getDirector() != null && !detailsDto.getDirector().isEmpty()) {
             MovieDetails director = repository.findByDirector(detailsDto.getDirector())
                     .orElseGet(() -> new Director(movie, detailsDto.getDirector()));
             movie.getMovieDetails().add(director);
@@ -62,7 +62,7 @@ public class MovieDetailsService {
     }
 
     private void setOriginCountry(MovieDetailsDto detailsDto, Movie movie) {
-        if (detailsDto.getOriginCountry() != null && detailsDto.getOriginCountry().length() != 0) {
+        if (detailsDto.getOriginCountry() != null && !detailsDto.getOriginCountry().isEmpty()) {
             MovieDetails originCountry = repository.findByOriginCountry(detailsDto.getOriginCountry())
                     .orElseGet(() -> new OriginCountry(movie, detailsDto.getOriginCountry()));
             movie.getMovieDetails().add(originCountry);

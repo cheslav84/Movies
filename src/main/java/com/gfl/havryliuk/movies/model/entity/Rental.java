@@ -20,7 +20,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-//@EqualsAndHashCode
+@EqualsAndHashCode
 @Entity
 public class Rental {
     @Id
@@ -44,6 +44,11 @@ public class Rental {
     @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "customer_id", nullable = false)
     private Customer customer;
+
+    @ManyToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "rental_record_id")
+    private RentalRecord rentalRecord;
+
 
 
 

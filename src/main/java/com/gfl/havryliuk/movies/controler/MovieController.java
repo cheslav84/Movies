@@ -1,5 +1,6 @@
 package com.gfl.havryliuk.movies.controler;
 
+import com.gfl.havryliuk.movies.model.dto.MovieSearchDto;
 import com.gfl.havryliuk.movies.model.entity.Movie;
 
 import com.gfl.havryliuk.movies.model.service.MovieService;
@@ -62,5 +63,22 @@ public class MovieController {
         return modelAndView;
     }
 
+    @GetMapping("/search")
+    public ModelAndView getMovieSearchPage(ModelAndView modelAndView) {
+        log.trace("get:/movies/search");
+        modelAndView.addObject("genres", movieTypeService.getAllGenres());
+        modelAndView.addObject("searchOptions", new MovieSearchDto());
+        modelAndView.setViewName("movie-search-options");
+        return modelAndView;
+    }
+
+    @GetMapping("/search/options")
+    public ModelAndView getMovieSearch(MovieSearchDto movieSearchDto, ModelAndView modelAndView) {
+        log.trace("get:/movies/search/options");
+        modelAndView.addObject("movies", service.findByOptions(movieSearchDto));
+        modelAndView.setViewName("movies");
+//        modelAndView.setViewName("redirect:/movies/search");
+        return modelAndView;
+    }
 
 }
