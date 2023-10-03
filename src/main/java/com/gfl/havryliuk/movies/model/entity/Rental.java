@@ -20,7 +20,6 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@EqualsAndHashCode
 @Entity
 public class Rental {
     @Id
@@ -40,6 +39,10 @@ public class Rental {
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     @Column(nullable = false)
     private LocalDateTime rentedDate;
+
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+    @Column
+    private LocalDateTime closeDate;
 
     @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "customer_id", nullable = false)

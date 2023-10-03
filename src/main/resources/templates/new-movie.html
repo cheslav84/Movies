@@ -72,6 +72,18 @@
                            placeholder="Days to rent" class="input-field" id="allowedRentalDays" required>
                 </div>
             </div>
+
+            <div class="small-container">
+                <input th:field="*{movieType.rentalInfo.bonus}" th:onclick="setBonusDaysField()" id="bonus" type="checkbox" />
+                <label for="bonus">Bonus for rent</label>
+            </div>
+
+            <div id="bonusBox" class="hidden">
+                <label class="label">Rent days to get bonus<span class="">*</span></label>
+                <input th:field="*{movieType.rentalInfo.rentalDaysForBonus}" type="number"
+                       placeholder="Days to get bonus" class="input-field" id="bonusDays">
+            </div>
+
             <hr>
             <hr>
 

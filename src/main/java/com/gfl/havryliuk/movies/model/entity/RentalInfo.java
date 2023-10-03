@@ -32,6 +32,11 @@ public class RentalInfo {
     private Integer allowedRentalDays;
     private boolean dailyWage;
 
+    private boolean bonus;
+
+    @Column(nullable = true)
+    private Integer rentalDaysForBonus;
+
 
     public static class Builder {
         private RentalInfo info;

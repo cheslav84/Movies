@@ -23,7 +23,7 @@
         <h4 class="center">Rentals</h4>
 
 
-        <form th:object="${customer}" th:action="@{/customers/__${customer.id}__/rentals/close}" method="post">
+        <form th:object="${customer}" th:action="@{/records/add/customers/__${customer.id}__}" method="post">
 
             <table class="center">
                 <thead>

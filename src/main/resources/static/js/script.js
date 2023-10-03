@@ -60,3 +60,19 @@ function toggleGenre() {
       genreSelect.setAttribute("required", "");
     }
 }
+
+
+function setBonusDaysField() {
+  var bonusCheckbox = document.getElementById("bonus");
+  var bonusBox = document.getElementById("bonusBox");
+  var bonusDays = document.getElementById("bonusDays");
+
+    if(bonusCheckbox.checked) {
+      bonusBox.classList.remove("hidden");
+      bonusDays.removeAttribute("required");
+    } else {
+      bonusBox.classList.add("hidden");
+      bonusDays.setAttribute("required", "");
+    }
+
+}

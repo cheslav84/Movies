@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<html>
+    <head>
+        <meta content="text/html; charset=UTF-8">
+        <link rel="stylesheet" th:href="@{/styles/common.css}" />
+    </head>
+    <body>
+    <h2 class="title">Movie rent</h2>
+    <nav th:replace="fragments :: nav"></nav>
+
+<!--    <h3 th:text="${customer.name}" class="title"></h3>-->
+
+    <div class="report">
+<!--        <div th:utext="${report.report}" >-->
+<!--        </div>-->
+    </div>
+
+    <div>
+        <object data="test.pdf" type="application/pdf" width="300" height="200">
+            alt : <a href="test.pdf">test.pdf</a>
+        </object>
+    </div>
+
+
+
+    </body>
+</html>

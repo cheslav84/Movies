@@ -61,14 +61,6 @@ public class RentalController {
         return modelAndView;
     }
 
-    @PostMapping("/close")
-    public ModelAndView closeRentals(@PathVariable String id, Customer customer, ModelAndView modelAndView) {
-        log.trace("post:/customers/{}/rentals/add", id);
 
-//        rentalDto.setCustomerId(id);
-//        service.saveRental(rentalDto);
-        modelAndView.setViewName("redirect:/customers/" + id);
-        return modelAndView;
-    }
 
 }

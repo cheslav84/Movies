@@ -161,3 +161,10 @@ input[type=submit]:hover {
 .description {
   height:40px;
 }
+
+.report {
+  text-align: center;
+  width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+}

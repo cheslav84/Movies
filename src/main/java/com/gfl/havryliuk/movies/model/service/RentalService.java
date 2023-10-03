@@ -2,6 +2,7 @@ package com.gfl.havryliuk.movies.model.service;
 
 import com.gfl.havryliuk.movies.model.dto.RentalDto;
 import com.gfl.havryliuk.movies.model.entity.Rental;
+
 import com.gfl.havryliuk.movies.model.repository.CustomerRepository;
 import com.gfl.havryliuk.movies.model.repository.MovieRepository;
 import com.gfl.havryliuk.movies.model.repository.RentalRepository;
@@ -10,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+
 
 
 @Slf4j
@@ -21,11 +23,13 @@ public class RentalService {
 
 
     @Autowired
-    public RentalService(RentalRepository repository, CustomerRepository customerRepository, MovieRepository movieRepository) {
+    public RentalService(RentalRepository repository, CustomerRepository customerRepository,
+                         MovieRepository movieRepository) {
         this.repository = repository;
         this.customerRepository = customerRepository;
         this.movieRepository = movieRepository;
     }
+
 
     public void saveRental(RentalDto rentalDto) {
         Rental rental = Rental.builder()
@@ -36,4 +40,6 @@ public class RentalService {
                 .build();
         repository.save(rental);
     }
+
+
 }
