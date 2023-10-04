@@ -2,10 +2,8 @@ package com.gfl.havryliuk.movies.controler;
 
 import com.gfl.havryliuk.movies.model.dto.MovieDetailsDto;
 import com.gfl.havryliuk.movies.model.entity.Movie;
-import com.gfl.havryliuk.movies.model.repository.MovieDetailsRepository;
 import com.gfl.havryliuk.movies.model.service.MovieDetailsService;
 import com.gfl.havryliuk.movies.model.service.MovieService;
-import com.gfl.havryliuk.movies.model.service.MovieTypeService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -31,7 +29,6 @@ public class MovieDetailsController {
     }
 
 
-
     @GetMapping("/add/{id}")
     public ModelAndView addMovieDetailsPage(@PathVariable String id, ModelAndView modelAndView) {
         log.trace("get:/movies/details/add/{}", id);
@@ -48,8 +45,6 @@ public class MovieDetailsController {
         Movie movie = service.addMovieDetails(detailsDto);
         modelAndView.addObject("movie", movie);
         modelAndView.setViewName("redirect:/movies/" + movie.getId());
-//        modelAndView.setViewName("redirect:/movies/96501e8c-6062-4c79-91a8-aff464e46d75");
-//        modelAndView.setViewName("redirect:/movies/add" );
 
         return modelAndView;
     }

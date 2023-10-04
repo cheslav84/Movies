@@ -13,18 +13,12 @@ import javax.persistence.Entity;
 @Entity
 public class OriginCountry extends MovieDetails {
 
-//    @Column(nullable = false)
     private String originCountry;
 
     public OriginCountry(Movie movie, String originCountry) {
         super(movie, "Origin country");
         this.originCountry = originCountry;
     }
-
-//    @Override
-//    String showDetails() {
-//        return details + ": " + director;
-//    }
 
     @Override
     public String toString() {

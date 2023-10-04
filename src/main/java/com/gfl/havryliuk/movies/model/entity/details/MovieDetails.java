@@ -1,7 +1,6 @@
 package com.gfl.havryliuk.movies.model.entity.details;
 
 import com.gfl.havryliuk.movies.model.entity.Movie;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

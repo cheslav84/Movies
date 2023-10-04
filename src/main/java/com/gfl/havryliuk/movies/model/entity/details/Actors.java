@@ -3,7 +3,6 @@ package com.gfl.havryliuk.movies.model.entity.details;
 import javax.persistence.*;
 
 import com.gfl.havryliuk.movies.model.entity.Movie;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -12,7 +11,6 @@ import java.util.stream.Collectors;
 
 @Getter
 @NoArgsConstructor
-//@EqualsAndHashCode
 @Entity
 public class Actors extends MovieDetails{
 
@@ -29,14 +27,6 @@ public class Actors extends MovieDetails{
         super(movie, "Actors");
         this.actors = actors;
     }
-
-
-//    @Override
-//    String showDetails() {
-//        return details + ": " + actors.stream()
-//                .map(Actor::toString)
-//                .collect(Collectors.joining(", "));
-//    }
 
 
     @Override

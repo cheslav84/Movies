@@ -1,6 +1,7 @@
 package com.gfl.havryliuk.movies.controler;
 
 import com.gfl.havryliuk.movies.model.entity.Customer;
+import com.gfl.havryliuk.movies.model.entity.Rental;
 import com.gfl.havryliuk.movies.model.report.Report;
 import com.gfl.havryliuk.movies.model.service.RentalRecordService;
 import lombok.extern.slf4j.Slf4j;
@@ -11,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
+import java.util.List;
 
 
 @Slf4j
@@ -69,8 +71,12 @@ public class RentalRecordController {
     @PostMapping("/add/customers/{id}")
     public ModelAndView addRentalRecord(@PathVariable String id, Customer customer, ModelAndView modelAndView) {
         log.trace("post:/records/add/customers/{}", id);
-        String recordId = service.createRecord(customer);
-        modelAndView.setViewName("redirect:/records/" + recordId);
+        if (customer.getRentals() != null) {
+            String recordId = service.createRecord(customer);
+            modelAndView.setViewName("redirect:/records/" + recordId);
+        } else {
+            modelAndView.setViewName("redirect:/records/all");
+        }
         return modelAndView;
     }
 

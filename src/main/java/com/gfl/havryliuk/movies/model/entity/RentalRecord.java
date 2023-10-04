@@ -35,23 +35,10 @@ public class RentalRecord {
 
     @Override
     public String toString() {
-
         StringBuilder builder = new StringBuilder();
         records.forEach((key, value) -> builder.append(key).append(", "));
-
         String movies = builder.toString();
         return movies.substring(0, movies.lastIndexOf(","));
 
-
-
-//        String customer = getRentals().get(0).getCustomer().getName();
-//
-//        StringBuilder builder = new StringBuilder();
-//        records.forEach((key, value) -> builder.append("  ").append(key).append(":  ").append(value).append("\n"));
-//
-//        return "Rental Record for " + customer + "\n" +
-//                builder +
-//                "Amount owed is" + price + "\n" +
-//                "You earned " + pointsEarned + " frequent renter points";
     }
 }

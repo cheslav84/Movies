@@ -6,17 +6,14 @@ import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
-import lombok.Getter;
 
 import java.io.ByteArrayOutputStream;
 import java.util.Map;
 
-//@Getter
+
 public class PdfReport implements Report {
 
-//    private final String report;
-    private ByteArrayOutputStream report;
-    private RentalRecord record;
+    private final RentalRecord record;
 
     public PdfReport(RentalRecord record) {
         this.record = record;
@@ -25,7 +22,7 @@ public class PdfReport implements Report {
     @Override
     public ByteArrayOutputStream getReport() {
         Document document = new Document();
-        report = new ByteArrayOutputStream();
+        ByteArrayOutputStream report = new ByteArrayOutputStream();
 
         try {
             PdfWriter.getInstance(document, report);
@@ -48,7 +45,5 @@ public class PdfReport implements Report {
         }
         document.add(new Paragraph("Amount owed is " + record.getPrice()));
         document.add(new Paragraph("You earned " + record.getPointsEarned()));
-
-
     }
 }

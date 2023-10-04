@@ -3,10 +3,8 @@ package com.gfl.havryliuk.movies.controler;
 import com.gfl.havryliuk.movies.model.dto.RentalDto;
 import com.gfl.havryliuk.movies.model.entity.Customer;
 import com.gfl.havryliuk.movies.model.entity.Movie;
-import com.gfl.havryliuk.movies.model.entity.Rental;
 import com.gfl.havryliuk.movies.model.service.CustomerService;
 import com.gfl.havryliuk.movies.model.service.MovieService;
-import com.gfl.havryliuk.movies.model.service.MovieTypeService;
 import com.gfl.havryliuk.movies.model.service.RentalService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +15,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.List;
 
 
 @Slf4j

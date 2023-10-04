@@ -19,10 +19,12 @@ public class PriceCalculator {
 
     private double getPricePerRentalPeriod(RentalInfo details, int daysRented) {
         int allowedRentalDays = details.getAllowedRentalDays();
-        double periodPrice = details.getPeriodPrice();
-        return allowedRentalDays <= daysRented ?
-                periodPrice :
-                periodPrice + (daysRented - allowedRentalDays) * details.getPenalty();
+
+        double rentalPrice = details.getPeriodPrice();
+        if (daysRented > allowedRentalDays) {
+            rentalPrice += (daysRented - allowedRentalDays) * details.getPenalty();
+        }
+        return rentalPrice;
     }
 
 

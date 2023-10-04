@@ -13,7 +13,6 @@ import lombok.NoArgsConstructor;
 @Entity
 public class Director extends MovieDetails {
 
-//    @Column(nullable = false)
     private String director;
 
     public Director(Movie movie, String director) {
@@ -21,10 +20,6 @@ public class Director extends MovieDetails {
         this.director = director;
     }
 
-//    @Override
-//    String showDetails() {
-//        return details + ": " + director;
-//    }
 
     @Override
     public String toString() {

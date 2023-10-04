@@ -6,10 +6,9 @@ import com.gfl.havryliuk.movies.model.report.Report;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
-//@Getter
 public class HtmlReport implements Report {
 
-    private ByteArrayOutputStream report;
+    private final ByteArrayOutputStream report;
 
     public HtmlReport(RentalRecord record) {
 
