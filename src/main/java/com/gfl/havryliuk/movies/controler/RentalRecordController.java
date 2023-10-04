@@ -1,24 +1,10 @@
 package com.gfl.havryliuk.movies.controler;
 
 import com.gfl.havryliuk.movies.model.entity.Customer;
-import com.gfl.havryliuk.movies.model.entity.RentalRecord;
 import com.gfl.havryliuk.movies.model.report.Report;
-import com.gfl.havryliuk.movies.model.report.pdf.PdfReport;
 import com.gfl.havryliuk.movies.model.service.RentalRecordService;
-import com.itextpdf.text.*;
-import com.itextpdf.text.pdf.PdfWriter;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.pdfbox.io.IOUtils;
-import org.apache.pdfbox.pdmodel.PDDocument;
-import org.apache.pdfbox.pdmodel.PDPage;
-import org.apache.pdfbox.pdmodel.PDPageContentStream;
-import org.apache.pdfbox.pdmodel.font.PDType1Font;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.InputStreamResource;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -84,7 +70,7 @@ public class RentalRecordController {
     public ModelAndView addRentalRecord(@PathVariable String id, Customer customer, ModelAndView modelAndView) {
         log.trace("post:/records/add/customers/{}", id);
         String recordId = service.createRecord(customer);
-        modelAndView.setViewName("redirect:/customers/" + id + "/records/" + recordId);
+        modelAndView.setViewName("redirect:/records/" + recordId);
         return modelAndView;
     }
 

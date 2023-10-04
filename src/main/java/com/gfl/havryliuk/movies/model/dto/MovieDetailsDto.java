@@ -10,6 +10,8 @@ import lombok.Setter;
 public class MovieDetailsDto {
 
     private Movie movie;
+    private String movieId;
+    private String movieTitle;
     private String description;
     private String director;
     private String originCountry;
@@ -19,8 +21,11 @@ public class MovieDetailsDto {
     }
 
     public MovieDetailsDto(Movie movie) {
-        this.movie = movie;
+        this.movieId = movie.getId();
+        this.movieTitle = movie.getTitle();
     }
+
+
 
 
 }

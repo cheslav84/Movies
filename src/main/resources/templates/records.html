@@ -23,11 +23,6 @@
                     <th>Date</th>
                     <th>Customer</th>
                     <th>Price</th>
-<!--                    -->
-<!--                    <th>Daily price</th>-->
-<!--                    <th>Period price</th>-->
-<!--                    <th>Penalty</th>-->
-<!--                    <th>Max rental days</th>-->
                 </tr>
             </thead>
             <tbody>
@@ -37,9 +32,6 @@
                         th:onclick="setLink(this.getAttribute('data-name'))" class="link" ></td>
                     <td th:data-name="|/records/pdf/__*{record.id}__|"
                         th:onclick="setLink(this.getAttribute('data-name'))" class="link" >pdf</td>
-
-<!--                    <td th:text="${record}"></td>-->
-
 
                     <td th:text="${#temporals.format(record.rentals[0].closeDate, 'dd&#x2011MM&#x2011yyyy HH:mm')}"></td>
 

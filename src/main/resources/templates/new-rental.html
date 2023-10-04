@@ -16,7 +16,7 @@
 
         <hr>
 
-        <form th:action="@{/rentals/add/customers/__${customer.id}__}" th:object="${rental}" method="post" class="center">
+        <form th:action="@{/customers/__${customer.id}__/rentals/add}" th:object="${rental}" method="post" class="center">
             <h3 class="" th:text="|Add rental for ${customer.name}|"></h3>
 
             <div class="">

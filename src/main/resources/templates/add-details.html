@@ -18,10 +18,11 @@
 
         <form th:action="@{/movies/details/add}" th:object="${detailsDto}" method="post" class="center">
 <!--        <form th:action="@{/movies/details/add/__*{movie.id}__}" th:object="${detailsDto}" method="post" class="center">-->
-            <h3 class="" th:text="|Add movie details for ${detailsDto.movie.title}|"></h3>
+            <h3 class="" th:text="|Add movie details for ${detailsDto.movieTitle}|"></h3>
 
             <div class="hidden">
-                <input type="hidden" th:field="*{movie}" th:value="*{movie}">
+                <input type="hidden" th:field="*{movieId}" th:value="*{movieId}">
+<!--                <input type="hidden" th:field="*{movieId}" th:value="*{movieId}">-->
             </div>
             <div class="">
                 <label class="label">Description:</label>
@@ -43,9 +44,7 @@
                           class="input-field"></textarea>
             </div>
 
-
             <hr>
-
 
             <input type="submit" name="send" value="Add descriptions" class="">
         </form>

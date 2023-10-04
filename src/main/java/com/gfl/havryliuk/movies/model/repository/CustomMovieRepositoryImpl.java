@@ -35,24 +35,10 @@ public class CustomMovieRepositoryImpl implements CustomMovieRepository {
         }
 
         if (!options.getTitle().isEmpty()) {
-            predicates.add(cb.equal(movie.get("title"), options.getTitle()));
+            predicates.add(cb.like(cb.upper(movie.get("title")), "%" + options.getTitle().toUpperCase() + "%"));
         }
 
-//        if (!options.getDirector().isEmpty()) {
-//            Predicate movieDetails = cb.equal(movie.get("movieDetails"));
-//
-//            predicates.add(cb.equal(movie.get("movieDetails"), options.getTitle()));
-//        }
-
-
-
-
-
-
         cq.where(predicates.toArray(new Predicate[0]));
-
-
-
 
         return em.createQuery(cq).getResultList();
     }

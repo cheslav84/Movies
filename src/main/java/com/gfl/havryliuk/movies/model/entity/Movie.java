@@ -47,4 +47,7 @@ public class Movie {
     public void addDetails(MovieDetails movieDetail) {
         this.movieDetails.add(movieDetail);
     }
+
+
+
 }

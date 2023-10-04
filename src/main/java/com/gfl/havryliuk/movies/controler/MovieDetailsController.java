@@ -48,6 +48,8 @@ public class MovieDetailsController {
         Movie movie = service.addMovieDetails(detailsDto);
         modelAndView.addObject("movie", movie);
         modelAndView.setViewName("redirect:/movies/" + movie.getId());
+//        modelAndView.setViewName("redirect:/movies/96501e8c-6062-4c79-91a8-aff464e46d75");
+//        modelAndView.setViewName("redirect:/movies/add" );
 
         return modelAndView;
     }

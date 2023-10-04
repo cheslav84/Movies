@@ -35,7 +35,8 @@ public class MovieDetailsService {
 
     @Transactional
     public Movie addMovieDetails(MovieDetailsDto detailsDto) {
-        Movie movie = movieRepository.findById(detailsDto.getMovie().getId()).orElseThrow();
+//        Movie movie = movieRepository.findById(detailsDto.getMovie().getId()).orElseThrow();
+        Movie movie = movieRepository.findById(detailsDto.getMovieId()).orElseThrow();
 
         setDescription(detailsDto, movie);
         setDirector(detailsDto, movie);
