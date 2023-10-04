@@ -15,6 +15,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -24,14 +26,22 @@ import java.util.Map;
 @Slf4j
 @Service
 public class RentalRecordService {
+
+    @PersistenceContext
+    private EntityManager em;
+
     private final RentalRecordRepository repository;
     private final CustomerRepository customerRepository;
+    private final PriceCalculator calculator;
+
 
 
     @Autowired
-    public RentalRecordService(RentalRecordRepository repository, CustomerRepository customerRepository) {
+    public RentalRecordService(RentalRecordRepository repository, CustomerRepository customerRepository,
+                               PriceCalculator calculator) {
         this.repository = repository;
         this.customerRepository = customerRepository;
+        this.calculator = calculator;
     }
 
     public Iterable<RentalRecord> getAllRecords() {
@@ -51,11 +61,13 @@ public class RentalRecordService {
     }
 
     @Transactional
-    public String createRecord(Customer customer) {
+    public String createRecord(Customer customerDetached) {
 
+        Customer customer = customerRepository.findById(customerDetached.getId()).orElseThrow();
+        em.merge(customer);//todo ask for better decision
 
         RentalRecord record = new RentalRecord();
-        List<Rental> rentals = customer.getRentals();
+        List<Rental> rentals = customerDetached.getRentals();
         Map<String, Double> records = record.getRecords();
 
         double price = 0;
@@ -64,7 +76,7 @@ public class RentalRecordService {
         for (Rental rental: rentals) {
             rental.setOpen(false);
             RentalInfo rentalInfo = rental.getMovie().getMovieType().getRentalInfo();
-            PriceCalculator calculator = new PriceCalculator();
+
             double rentalPrice = calculator.calculatePrice(rentalInfo, rental.getDaysRented());
 
             records.put(rental.getMovie().getTitle(), rentalPrice);
@@ -81,9 +93,8 @@ public class RentalRecordService {
         record.setPrice(price);
         record.setPointsEarned(rentalPoints);
 
-        int frequentRenterPoint = customer.getFrequentRenterPoint();
+        int frequentRenterPoint = customerDetached.getFrequentRenterPoint();
         frequentRenterPoint += rentalPoints;
-
         customer.setFrequentRenterPoint(frequentRenterPoint);
 
         RentalRecord saved = repository.save(record);
