@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+
+<html>
+    <head>
+        <meta content="text/html; charset=UTF-8">
+        <link rel="stylesheet" th:href="@{/styles/common.css}" />
+    </head>
+    <body>
+        <h2 class="title">Movie rent</h2>
+        <nav th:replace="fragments :: nav"></nav>
+
+        <hr>
+
+        <form th:action="@{/movies/search/options}" th:object="${searchOptions}"  method="get" class="center">
+            <h3 class="">Find movie</h3>
+            <h4 class="">Select one or more options</h4>
+
+             <div class="">
+                <label class="label">Genre</label>
+                <select th:field="*{genre}" class="input-field" id="genreSelect">
+                    <option th:value="null" selected>Select genre</option>
+                    <option th:each="i : ${genres}" th:value="${i}" th:text="${i}"></option>
+                </select>
+            </div>
+            <div class="">
+                <label class="label">Title</label>
+                <input th:field="*{title}" type="text" placeholder="Title" class="input-field">
+            </div>
+<!--            <div class="">-->
+<!--                <label class="label">Director</label>-->
+<!--                <input th:field="*{director}" type="text" placeholder="Director" class="input-field">-->
+<!--            </div>-->
+<!--            <div class="">-->
+<!--                <label class="label">Actor</label>-->
+<!--                <input th:field="*{actor}" type="text" placeholder="Actor" class="input-field">-->
+<!--            </div>-->
+<!--            <div class="">-->
+<!--                <label class="label">Origin Country</label>-->
+<!--                <input th:field="*{originCountry}" type="text" placeholder="Origin Country" class="input-field">-->
+<!--            </div>-->
+
+            <hr>
+            <input type="submit" name="send" value="Find movies" class="">
+        </form>
+
+        <script type="text/javascript" th:src="@{/js/script.js}"></script>
+
+    </body>
+</html>

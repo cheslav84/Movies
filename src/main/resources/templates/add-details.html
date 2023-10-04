@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+
+<html>
+    <head>
+        <meta content="text/html; charset=UTF-8">
+        <link rel="stylesheet" th:href="@{/styles/common.css}" />
+    </head>
+    <body>
+        <h2 class="title">Movie rent</h2>
+        <nav th:replace="fragments :: nav"></nav>
+
+        <hr>
+
+        <form th:action="@{/movies/details/add}" th:object="${detailsDto}" method="post" class="center">
+<!--        <form th:action="@{/movies/details/add/__*{movie.id}__}" th:object="${detailsDto}" method="post" class="center">-->
+            <h3 class="" th:text="|Add movie details for ${detailsDto.movieTitle}|"></h3>
+
+            <div class="hidden">
+                <input type="hidden" th:field="*{movieId}" th:value="*{movieId}">
+<!--                <input type="hidden" th:field="*{movieId}" th:value="*{movieId}">-->
+            </div>
+            <div class="">
+                <label class="label">Description:</label>
+                <textarea th:field="*{description}" type="text" placeholder="Type short description"
+                          class="input-field description"></textarea>
+            </div>
+            <div class="">
+                <label class="label">Director:</label>
+                <input th:field="*{director}" type="text" placeholder="Director name" class="input-field">
+            </div>
+            <div class="">
+                <label class="label">Origin country:</label>
+                <input th:field="*{originCountry}" type="text" placeholder="Origin country" class="input-field">
+            </div>
+
+            <div class="">
+                <label class="label">Actors:</label>
+                <textarea th:field="*{actors}" type="text" placeholder="Enter actor(s) (separate by comma)"
+                          class="input-field"></textarea>
+            </div>
+
+            <hr>
+
+            <input type="submit" name="send" value="Add descriptions" class="">
+        </form>
+
+        <script type="text/javascript" th:src="@{/js/script.js}"></script>
+
+    </body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<html>
+    <head>
+        <meta content="text/html; charset=UTF-8">
+        <link rel="stylesheet" th:href="@{/styles/common.css}" />
+    </head>
+    <body>
+    <h2 class="title">Movie rent</h2>
+    <nav th:replace="fragments :: nav"></nav>
+
+
+    <div th:if="${customers.size > 0}">
+        <table class="center">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Frequent rental points</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="customer, state : ${customers}" >
+                    <td th:text="${customer.name}"  th:data-name="|/customers/${customer.id}|"
+                        th:onclick="setLink(this.getAttribute('data-name'))" class="link" ></td>
+                    <td th:text="${customer.frequentRenterPoint}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h3 th:if="${customers.size == 0}" class="center">There are not any movies yet.</h3>
+
+    <script type="text/javascript" th:src="@{/js/script.js}"></script>
+
+    </body>
+</html>

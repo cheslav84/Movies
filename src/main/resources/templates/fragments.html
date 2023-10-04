@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+
+<html>
+<nav th:fragment="nav" class="container">
+    <div class="navigation">
+        <div class="dropdown">
+            <span class="link">Movies</span>
+            <div class="dropdown-content">
+                <div class="dropdown-item">
+                    <a th:href="@{/movies/add}" class="link">Add movie</a>
+                </div>
+                <div class="dropdown-item">
+                    <a th:href="@{/movies/all}" class="link">Show all the movies</a>
+                </div>
+                <div class="dropdown-item">
+                    <a th:href="@{/movies/search}" class="link">Search by options</a>
+                </div>
+                <div class="dropdown-item">
+                    <a th:href="@{/records/all}" class="link">Show all the records</a>
+                </div>
+<!--                <div class="dropdown-item">-->
+<!--                    <span class="link">Select by genre</span>-->
+<!--                    <form method="get" th:action="@{/movies/genre}" name="equationForm">-->
+<!--                        <input class="center" type="text" name="genre" minlength="3" maxlength="20" required="true"/>-->
+<!--                        &lt;!&ndash;                        <input class="center" type="text" name="genre" minlength="3" maxlength="20" required="true" value="${root}" />&ndash;&gt;-->
+<!--                        <input type="submit" value="Find"/>-->
+<!--                    </form>-->
+<!--                </div>-->
+<!--                <div class="dropdown-item">-->
+<!--                    <span class="link">Select by author</span>-->
+<!--                    <form method="get" th:action="@{/movies/author}" name="equationForm">-->
+<!--                        <input class="center" type="text" name="author" minlength="3" maxlength="20" required="true"/>-->
+<!--                        &lt;!&ndash;                        <input class="center" type="text" name="genre" minlength="3" maxlength="20" required="true" value="${root}" />&ndash;&gt;-->
+<!--                        <input type="submit" value="Find"/>-->
+<!--                    </form>-->
+<!--                </div>-->
+            </div>
+        </div>
+
+
+        <div class="dropdown">
+            <span class="link">Customers</span>
+            <div class="dropdown-content">
+                <div class="dropdown-item">
+                    <a th:href="@{/customers/add}" class="link">Add customer</a>
+                </div>
+                <div class="dropdown-item">
+                    <a th:href="@{/customers/all}" class="link">Show all the customers</a>
+                </div>
+<!--                <div class="dropdown-item">-->
+<!--                    <span class="link">Equations with roots amount of</span>-->
+<!--                    <form method="get" action="equations/withRootsAmount" name="equationForm">-->
+<!--                        <input class="center narrow" type="number" name="rootsAmount" minlength="1" maxlength="2"-->
+<!--                               required="true" value="${root}"/>-->
+<!--                        <input type="submit" value="Find"/>-->
+<!--                    </form>-->
+<!--                </div>-->
+<!--                <div class="dropdown-item">-->
+<!--                    <span class="link">Equations with root of</span>-->
+<!--                    <form method="get" action="equations/withRootNumber" name="equationForm">-->
+<!--                        <input class="center" type="number" name="root" minlength="1" maxlength="20" required="true"-->
+<!--                               value="${root}"/>-->
+<!--                        <input type="submit" value="Find"/>-->
+<!--                    </form>-->
+<!--                </div>-->
+            </div>
+        </div>
+    </div>
+</nav>
+
+
+
+
+</body>
+</html>

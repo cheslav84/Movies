@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<html>
+    <head>
+        <meta content="text/html; charset=UTF-8">
+        <link rel="stylesheet" th:href="@{/styles/common.css}" />
+    </head>
+    <body>
+    <h2 class="title">Movie rent</h2>
+    <nav th:replace="fragments :: nav"></nav>
+
+
+    <div th:if="${records.size > 0}">
+        <table class="center">
+            <thead>
+                <tr>
+                    <th>Record</th>
+                    <th>PDF</th>
+                    <th>Date</th>
+                    <th>Customer</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="record, state : ${records}" >
+
+                    <td th:text="${record}"  th:data-name="|/records/__*{record.id}__|"
+                        th:onclick="setLink(this.getAttribute('data-name'))" class="link" ></td>
+                    <td th:data-name="|/records/pdf/__*{record.id}__|"
+                        th:onclick="setLink(this.getAttribute('data-name'))" class="link" >pdf</td>
+
+                    <td th:text="${#temporals.format(record.rentals[0].closeDate, 'dd&#x2011MM&#x2011yyyy HH:mm')}"></td>
+
+                    <td th:text="${record.rentals[0].customer.name}"></td>
+
+                    <td th:text="${record.price}"></td>
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <h3 th:if="${records.size == 0}" class="center">There are not any records yet.</h3>
+
+    <script type="text/javascript" th:src="@{/js/script.js}"></script>
+
+    </body>
+</html>
